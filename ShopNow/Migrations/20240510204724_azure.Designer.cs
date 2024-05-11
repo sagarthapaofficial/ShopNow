@@ -12,7 +12,7 @@ using ShopNow.DAL;
 namespace ShopNow.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230926215318_azure")]
+    [Migration("20240510204724_azure")]
     partial class azure
     {
         /// <inheritdoc />
