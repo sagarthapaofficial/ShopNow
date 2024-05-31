@@ -26,6 +26,7 @@ namespace ShopNow.Controllers
         public async Task<ActionResult<CustomerHelper>> Index(CustomerHelper helper)
         {
             CustomerDAO dao = new CustomerDAO(_db);
+
             Customer already = await dao.GetByEmail(helper.email);
             if (already == null)
             {

@@ -37,7 +37,7 @@ namespace ShopNow.Controllers
         {
             CustomerDAO dao = new CustomerDAO(_db);
             Customer c = await dao.GetByEmail(helper.email);
-            if (c != null)
+            if (c != null)//wi
             {
                 if (VerifyPassword(helper.password, c.Hash, c.Salt))
                 {
