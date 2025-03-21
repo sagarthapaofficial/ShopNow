@@ -12,7 +12,7 @@ using ShopNow.DAL;
 namespace ShopNow.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250321043943_azure")]
+    [Migration("20250321135404_azure")]
     partial class azure
     {
         /// <inheritdoc />
@@ -20,7 +20,7 @@ namespace ShopNow.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.10")
+                .HasAnnotation("ProductVersion", "9.0.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
