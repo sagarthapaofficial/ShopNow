@@ -12,8 +12,8 @@ using ShopNow.DAL;
 namespace ShopNow.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240510204724_azure")]
-    partial class azure
+    [Migration("20250320230605_first")]
+    partial class first
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

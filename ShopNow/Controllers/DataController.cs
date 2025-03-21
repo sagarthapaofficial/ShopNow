@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ShopNow.DAL;
+using ShopNow.DAL.DAO;
 using System.Text.Json;
 
 namespace ShopNow.Controllers
@@ -11,9 +12,11 @@ namespace ShopNow.Controllers
     {
 
         AppDbContext _ctx;
-        public DataController(AppDbContext context) // injected here
+        IWebHostEnvironment _env;
+        public DataController(AppDbContext context, IWebHostEnvironment env) // injected here
         {
             _ctx = context;
+            _env = env;
         }
 
 
@@ -36,11 +39,29 @@ namespace ShopNow.Controllers
 
         private async Task<String> getProductItemJsonFromWebAsync()
         {
-            string url = "https://raw.githubusercontent.com/sagarthapaofficial/SnotifyFile/main/file.json?token=GHSAT0AAAAAACGUAL2ZRHIQ7I6JBPTMK4PAZHGUXWA";
+            string url = "https://raw.githubusercontent.com/sagarthapaofficial/SnotifyFile/refs/heads/main/file.json";
             var httpClient = new HttpClient();
             var response = await httpClient.GetAsync(url);
             var result = await response.Content.ReadAsStringAsync();
             return result;
+        }
+
+
+        [Route("loadstores")]
+        public async Task<ActionResult<String>> LoadStores()
+        {
+            string payload = "";
+            StoreDAO dao = new StoreDAO(_ctx);
+            bool storesLoaded = await dao.LoadStoresFromFile(_env.WebRootPath);
+            try
+            {
+                payload = storesLoaded ? "stores loaded successfully" : "problem loading store data";
+            }
+            catch (Exception ex)
+            {
+                payload = ex.Message;
+            }
+            return JsonSerializer.Serialize(payload);
         }
     }
 }

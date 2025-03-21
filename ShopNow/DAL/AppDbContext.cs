@@ -14,5 +14,6 @@ namespace ShopNow.DAL
         public virtual DbSet<OrderLineItem> OrderLineItems { get; set; } = null!;
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<Branch> Branches { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
     }
 }

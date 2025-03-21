@@ -28,7 +28,7 @@ namespace ShopNow.DAL.DAO
                 var lonParam = new SqlParameter("@lon", lon);
 
                 //passing the longtitude and latitude to Branchprocedure.
-                var query = _db.Branches.FromSqlRaw("dbo.pGetThreeClosestBranches @lat, @lon", latParam,
+                var query = _db.Branches.FromSqlRaw("dbo.pGetThreeClosestStores @lat, @lon", latParam,
                 lonParam);
 
                 // converts the result comming from query to list.
